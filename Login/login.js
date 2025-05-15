@@ -1,4 +1,4 @@
-import { auth, signInWithEmailAndPassword } from "../firebase.js";
+import { auth, signInWithEmailAndPassword , onAuthStateChanged } from "../firebase.js";
 
 
 let formFeild = document.querySelectorAll("form input");
@@ -45,3 +45,10 @@ loginBtn.addEventListener("click",Login)
 
 
 let forgotPass = document.getElementById('forgot-password');
+
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    window.location.href = '../Dashboard/Dashboard.html'
+  } 
+});
