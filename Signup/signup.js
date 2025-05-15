@@ -12,13 +12,25 @@ createUserWithEmailAndPassword(auth, userEmail.value, userPassword.value)
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
-    console.log(user);
+    Toastify({
+
+text: "Signup Successfully",
+
+duration: 3000
+
+}).showToast();
     
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    console.log(errorMessage);
+Toastify({
+
+text:`${errorMessage}`,
+
+duration: 3000
+
+}).showToast();
     
   });
 
