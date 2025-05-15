@@ -43,6 +43,6 @@ signUpBtn.addEventListener('click', signUp)
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    window.location.href = '../Dashboard/Dashboard.html'
+    window.location.href = '../Login/login.html'
   } 
 });

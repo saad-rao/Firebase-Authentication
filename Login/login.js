@@ -1,4 +1,4 @@
-import { auth, signInWithEmailAndPassword , onAuthStateChanged } from "../firebase.js";
+import { auth, signInWithEmailAndPassword , onAuthStateChanged , sendPasswordResetEmail } from "../firebase.js";
 
 
 let formFeild = document.querySelectorAll("form input");
@@ -46,6 +46,33 @@ loginBtn.addEventListener("click",Login)
 
 let forgotPass = document.getElementById('forgot-password');
 
+
+const forgotPassword = ()=>{
+    sendPasswordResetEmail(auth, loginEmail.value)
+  .then(() => {
+     Toastify({
+
+text: "Check your Email",
+
+duration: 3000
+
+}).showToast();
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  Toastify({
+
+text: errorMessage, 
+
+duration: 3000
+
+}).showToast();
+  });
+}
+
+
+forgotPass.addEventListener("click" , forgotPassword)
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
